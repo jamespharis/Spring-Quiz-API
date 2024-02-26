@@ -16,7 +16,6 @@ import com.cooksys.quiz_api.exceptions.BadRequestException;
 import com.cooksys.quiz_api.exceptions.NotFoundException;
 import com.cooksys.quiz_api.mappers.QuestionMapper;
 import com.cooksys.quiz_api.mappers.QuizMapper;
-import com.cooksys.quiz_api.repositories.AnswerRepository;
 import com.cooksys.quiz_api.repositories.QuestionRepository;
 import com.cooksys.quiz_api.repositories.QuizRepository;
 import com.cooksys.quiz_api.services.QuizService;
@@ -29,7 +28,6 @@ public class QuizServiceImpl implements QuizService {
 
 	private final QuizRepository quizRepository;
   	private final QuestionRepository questionRepository;
-  	private final AnswerRepository answerRepository;
   	private final QuizMapper quizMapper;
   	private final QuestionMapper questionMapper;
 
