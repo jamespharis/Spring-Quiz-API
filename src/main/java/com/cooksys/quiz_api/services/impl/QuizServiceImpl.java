@@ -44,7 +44,7 @@ public class QuizServiceImpl implements QuizService {
   	
   	
   	public Quiz getQuiz(Long id) {
-  		Optional<Quiz> optionalQuiz = quizRepository.findById(id);
+  		Optional<Quiz> optionalQuiz = quizRepository.findByIdAndDeletedFalse(id);
   		if(optionalQuiz.isEmpty() ) {
   			throw new NotFoundException("No quiz found with id: " +id);
   		}
@@ -76,7 +76,8 @@ public class QuizServiceImpl implements QuizService {
   	@Override
 	public QuizResponseDto deleteQuiz(Long id) {
 		Quiz quizToDelete = getQuiz(id);
-		quizRepository.delete(quizToDelete);
+		//quizRepository.delete(quizToDelete);
+		quizToDelete.setDeleted(true);
 		return quizMapper.entityToDto(quizToDelete);
 	}
 
