@@ -2,6 +2,8 @@ package com.cooksys.quiz_api.repositories;
 
 import com.cooksys.quiz_api.entities.Question;
 
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -11,6 +13,8 @@ import org.springframework.stereotype.Repository;
 // without using this interface.
 @Repository
 public interface QuestionRepository extends JpaRepository<Question, Long> {
+
+	Optional<Question> findByIdAndDeletedFalse(Long id);
 
   // TODO: Do you need any derived queries? If so add them here.
 

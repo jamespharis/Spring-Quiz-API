@@ -42,8 +42,8 @@ public class QuizController {
 	}
 
 	@PatchMapping("/{id}/rename/{newName}") // Rename the specified quiz using the new name given - Returns the renamed 'Quiz'
-	public QuizResponseDto renameQuiz(@PathVariable Long id, @RequestBody QuizRequestDto quizRequestDto) {
-		return quizService.renameQuiz(id, quizRequestDto);
+	public QuizResponseDto renameQuiz(@PathVariable Long id, @PathVariable String newName) {
+		return quizService.renameQuiz(id, newName);
 	}
 
 	@GetMapping("/{id}/random") // Returns a random 'Question' from the specified quiz
@@ -56,8 +56,8 @@ public class QuizController {
 		return quizService.addQuestion(id, questionRequestDto);
 	}
 
-	@DeleteMapping("/{id}/delete/{question}") // Deletes the specified question from the specified quiz - Returns the deleted 'Question'
-	public QuizResponseDto deleteQuestion(@PathVariable Long id, @RequestBody QuestionRequestDto questionRequestDto) {
-		return quizService.deleteQuestion(id, questionRequestDto);
+	@DeleteMapping("/{id}/delete/{questionID}") // Deletes the specified question from the specified quiz - Returns the deleted 'Question'
+	public QuestionResponseDto deleteQuestion(@PathVariable Long id, @PathVariable Long questionID) {
+		return quizService.deleteQuestion(id, questionID);
 	}
 }

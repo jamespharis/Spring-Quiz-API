@@ -1,7 +1,9 @@
 package com.cooksys.quiz_api.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -27,7 +29,9 @@ public class Question {
   @JoinColumn(name = "quiz_id")
   private Quiz quiz;
 
-  @OneToMany(mappedBy = "question")
-  private List<Answer> answers;
-
+  @OneToMany(mappedBy = "question", cascade = CascadeType.ALL) // if deleting, will delete underneath it (answers)
+  private List<Answer> answers = new ArrayList<>();
+  
+  private boolean deleted;
+	
 }

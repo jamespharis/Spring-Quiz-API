@@ -6,9 +6,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class AnswerRequestDto {
-	
-	  private Long id;
 
 	  private String text;
+	  
+	  private boolean correct;
 
 }
